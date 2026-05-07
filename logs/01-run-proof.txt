@@ -1,0 +1,6 @@
+Laptop@anhduc0190 MINGW64 /d/Nhập môn an toàn bảo mật thông tin/fit4012-lab4-des-anhduc0190 (main)
+$ bash .github/grading/test_q2.sh
+[PASS] Q2 đạt: có nhập từ bàn phím và xử lý multi-block + zero padding đúng theo vector kiểm thử.
+
+$ bash .github/grading/test_q4.sh
+[PASS] Q4 đạt: TripleDES encrypt/decrypt đúng theo vector kiểm thử.

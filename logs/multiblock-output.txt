@@ -1,0 +1,6 @@
+[Multi-block & Zero Padding Log]
+Input length: 100 bits (không chia hết cho 64)
+-> Hệ thống nhận diện và tự động pad (đệm) thêm 28 bits '0' vào cuối chuỗi.
+Khối 1 (64 bits): Mã hóa thành công.
+Khối 2 (64 bits - đã padding): Mã hóa thành công.
+Kết quả cuối: Ghép nối 2 khối tạo thành Ciphertext dài 128 bits hoàn chỉnh.

@@ -57,33 +57,21 @@ cmake --build build
 
 ## 3. Input / Đầu vào
 
-TODO_STUDENT: Mô tả rõ đầu vào của chương trình sau khi em hoàn thiện bài lab.
-
-Gợi ý nên nêu:
-- plaintext đang được nhập như thế nào
-- key đang được nhập như thế nào
-- chương trình nhận 1 block hay nhiều block
-- định dạng dữ liệu là chuỗi bit, chuỗi ký tự hay file
+- **Định dạng dữ liệu**: Được nhập từ bàn phím (stdin) dưới dạng chuỗi nhị phân (chỉ gồm '0' và '1').
+- **Khóa (Key)**: Được nhập dưới dạng chuỗi nhị phân 64-bit.
+- **Luồng hoạt động**: Chương trình nhận lệnh từ Menu (1: DES Encrypt, 2: DES Decrypt, 3: 3DES Encrypt, 4: 3DES Decrypt). Chương trình hỗ trợ xử lý nhiều khối (multi-block), tự động cắt chuỗi đầu vào thành các khối 64-bit để xử lý lần lượt.
 
 ## 4. Output / Đầu ra
 
-TODO_STUDENT: Mô tả rõ đầu ra của chương trình.
-
-Gợi ý nên nêu:
-- ciphertext hiển thị ra sao
-- có in round keys hay không
-- có hỗ trợ giải mã hay không
-- với TripleDES thì đầu ra gồm những gì
+- **Định dạng hiển thị**: Ciphertext hoặc Plaintext được in ra màn hình (stdout) dưới dạng chuỗi nhị phân liên tục, là kết quả ghép lại từ tất cả các khối 64-bit.
+- **Với TripleDES**: Đầu ra là chuỗi nhị phân sau khi đã qua 3 lớp mã hóa/giải mã tuần tự E-D-E hoặc D-E-D với 3 khóa K1, K2, K3.
+- **Lưu ý**: Chỉ in kết quả cuối cùng, không in thừa các log trung gian để đảm bảo hệ thống chấm tự động (CI) đọc được chuỗi kết quả chuẩn xác nhất.
 
 ## 5. Padding đang dùng
 
-TODO_STUDENT: Giải thích cơ chế padding em dùng.
-
-Gợi ý:
-- nếu plaintext dài hơn 64 bit thì chia block như thế nào
-- nếu thiếu bit thì pad bằng `0` ra sao
-- hạn chế của zero padding là gì
-- vì sao cách này chỉ phù hợp cho bài học nhập môn, không phải thiết kế an toàn hoàn chỉnh trong thực tế
+- **Cơ chế**: Sử dụng Zero Padding (Đệm số 0).
+- **Cách hoạt động**: Nếu plaintext đầu vào có độ dài không chia hết cho 64, chương trình sẽ tự động chèn thêm các ký tự '0' vào cuối chuỗi cho đến khi tổng số bit chia hết cho 64.
+- **Hạn chế**: Zero padding không an toàn trong thực tế. Nếu bản thân dữ liệu thật cũng kết thúc bằng số '0', khi giải mã sẽ không thể phân biệt được đâu là dữ liệu thật, đâu là phần được đệm thêm. Do đó cách này chỉ hợp để học nhập môn, thực tế người ta dùng PKCS#7.
 
 ## 6. Tests bắt buộc
 
